@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Tiny Museum Swarm</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="masthead">
+    <div class="brand-mark" aria-hidden="true"><span>✦</span></div>
+    <div class="brand-copy">
+      <p class="eyebrow">AutoGen AgentChat · a local cabinet of collaborative curiosities</p>
+      <h1>Tiny Museum <em>Swarm</em></h1>
+    </div>
+    <div id="provider-status" class="provider-status"><span class="status-dot"></span>Checking local models</div>
+  </header>
+
+  <main class="page-shell">
+    <section class="invitation panel">
+      <div>
+        <p class="section-label">Begin an exhibition</p>
+        <h2>What ordinary thing should we look at <em>closely?</em></h2>
+      </div>
+      <form id="run-form" class="topic-form">
+        <label class="sr-only" for="topic">Object or idea</label>
+        <input id="topic" name="topic" maxlength="300" placeholder="a key, an umbrella, a pause…" autocomplete="off" required>
+        <button id="start-button" class="primary-button" type="submit">Open the museum <span>→</span></button>
+        <button id="cancel-button" class="ghost-button hidden" type="button">Stop safely</button>
+      </form>
+      <div class="global-meter">
+        <div class="meter-copy"><span id="run-status">Ready for an object</span><span id="global-usage">0 / 80,000 tokens</span></div>
+        <div class="meter-track"><div id="global-meter-fill" class="meter-fill"></div><i class="warning-tick"></i><i class="reserve-tick"></i></div>
+      </div>
+    </section>
+
+    <section id="agent-cards" class="agent-grid" aria-label="Swarm agents"></section>
+
+    <section class="museum-console panel">
+      <nav class="tabs" aria-label="Museum views">
+        <button class="tab active" data-tab="transcript">Live transcript <span id="event-count" class="tab-count">0</span></button>
+        <button class="tab" data-tab="workspace">Shared workspace</button>
+        <button class="tab" data-tab="exhibition">Final exhibition</button>
+        <button class="tab" data-tab="statistics">Run statistics</button>
+        <button class="tab" data-tab="configuration">Models</button>
+      </nav>
+
+      <div id="view-transcript" class="view active">
+        <div class="view-heading">
+          <div><p class="section-label">Public record</p><h3>Every visible decision and handoff</h3></div>
+          <p class="view-note">Public summaries only — never hidden chain-of-thought.</p>
+        </div>
+        <div id="transcript" class="transcript">
+          <div class="empty-state"><span>◌</span><h4>The gallery is quiet</h4><p>Choose an object to watch four agents build an exhibition together.</p></div>
+        </div>
+      </div>
+
+      <div id="view-workspace" class="view">
+        <div class="view-heading"><div><p class="section-label">Shared worktable</p><h3>What the swarm keeps</h3></div><p class="view-note">Compact state is sent to models; the full transcript stays here.</p></div>
+        <div id="workspace" class="workspace-grid"></div>
+      </div>
+
+      <div id="view-exhibition" class="view">
+        <div class="view-heading"><div><p class="section-label">Curator-approved</p><h3>The miniature museum</h3></div></div>
+        <article id="exhibition" class="exhibition-paper"><div class="empty-state"><span>◇</span><h4>No exhibition yet</h4><p>Only the Museum Curator can open this final gallery.</p></div></article>
+      </div>
+
+      <div id="view-statistics" class="view">
+        <div class="view-heading"><div><p class="section-label">Run ledger</p><h3>Budgets, calls, and handoffs</h3></div></div>
+        <div id="statistics" class="stats-layout"></div>
+      </div>
+
+      <div id="view-configuration" class="view">
+        <div class="view-heading"><div><p class="section-label">Independent models</p><h3>Configure each mind</h3></div><p class="view-note">Changes apply to the next run. API keys remain in environment variables.</p></div>
+        <form id="config-form"><div id="config-rows" class="config-rows"></div><button class="primary-button config-save" type="submit">Save runtime configuration</button><span id="config-message" class="config-message"></span></form>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Tiny Museum Swarm</span><span>Local-first · observable · bounded</span></footer>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

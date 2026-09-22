@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiny-museum-swarm"
+version = "0.1.0"
+description = "A local-first, handoff-driven multi-agent miniature museum"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Tiny Museum Swarm contributors"}]
+dependencies = [
+  "autogen-agentchat==0.7.5",
+  "autogen-ext[openai]==0.7.5",
+]
+
+[project.scripts]
+tiny-museum = "tiny_museum.__main__:main"
+
+[tool.setuptools]
+packages = ["tiny_museum"]
+
+[tool.setuptools.package-data]
+tiny_museum = ["static/*"]

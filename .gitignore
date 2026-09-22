@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.venv/
+.tiny-museum/runs/*
+!/.tiny-museum/runs/.gitkeep
+outputs/
+build/
+dist/
+*.egg-info/
+coverage.xml
+htmlcov/
+work/

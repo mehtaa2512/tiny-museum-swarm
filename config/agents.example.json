@@ -1,0 +1,93 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8765
+  },
+  "image_generation": {
+    "enabled": true,
+    "provider": "ollama_image",
+    "model": "x/z-image-turbo:fp8",
+    "size": "1024x1024",
+    "timeout_seconds": 600
+  },
+  "limits": {
+    "total_tokens": 80000,
+    "warn_at_fraction": 0.7,
+    "curator_reserve_starts_at": 70000,
+    "max_model_calls": 10,
+    "max_handoffs": 9,
+    "max_pair_handoffs": 2,
+    "max_curator_rejections": 2,
+    "max_curator_format_retries": 1,
+    "max_context_tokens": 6000,
+    "curator_context_tokens": 3000,
+    "specialist_max_output_tokens": 800,
+    "curator_max_output_tokens": 1800
+  },
+  "providers": {
+    "ollama": {
+      "kind": "ollama",
+      "base_url": "http://127.0.0.1:11434",
+      "timeout_seconds": 180,
+      "supports_tools": true,
+      "input_cost_per_million": 0,
+      "output_cost_per_million": 0
+    },
+    "ollama_image": {
+      "kind": "ollama_image",
+      "base_url": "http://127.0.0.1:11435",
+      "timeout_seconds": 600,
+      "supports_tools": false,
+      "input_cost_per_million": 0,
+      "output_cost_per_million": 0
+    },
+    "openai": {
+      "kind": "openai_compatible",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "timeout_seconds": 180,
+      "supports_tools": true,
+      "input_cost_per_million": 0,
+      "output_cost_per_million": 0
+    },
+    "compatible": {
+      "kind": "openai_compatible",
+      "base_url": "http://127.0.0.1:1234/v1",
+      "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
+      "timeout_seconds": 180,
+      "supports_tools": true,
+      "input_cost_per_million": 0,
+      "output_cost_per_million": 0
+    }
+  },
+  "agents": {
+    "scout": {
+      "display_name": "Curiosity Scout",
+      "provider": "ollama",
+      "model": "qwen3:30b-instruct",
+      "token_budget": 20000,
+      "color": "#ffb85a"
+    },
+    "weaver": {
+      "display_name": "Connection Weaver",
+      "provider": "ollama",
+      "model": "qwen3:30b-instruct",
+      "token_budget": 20000,
+      "color": "#a98cff"
+    },
+    "storysmith": {
+      "display_name": "Storysmith",
+      "provider": "ollama",
+      "model": "qwen3:30b-instruct",
+      "token_budget": 20000,
+      "color": "#59d7c7"
+    },
+    "curator": {
+      "display_name": "Museum Curator",
+      "provider": "ollama",
+      "model": "decision-qwen3:30b-16k",
+      "token_budget": 20000,
+      "color": "#ff6f91"
+    }
+  }
+}
